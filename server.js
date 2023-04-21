@@ -13,6 +13,7 @@ app.use(cors(corsOptions))
 // Limit size body
 app.use(express.json({limit: '1kb'}))
 app.use(express.urlencoded({limit: '1kb', extended: true}))
+app.use(expressSanitizer())
 
 app.use(function(err, req, res, next){
     if(err.type == 'entity.too.large'){
