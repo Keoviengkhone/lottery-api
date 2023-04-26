@@ -2,6 +2,7 @@ const express = require("express")
 const app = express();
 const cors = require("cors")
 const expressSanitizer = require("express-sanitizer")
+const path = require("path")
 
 // CORS cross origin resource sharing
 var corsOptions = {
@@ -9,6 +10,8 @@ var corsOptions = {
     optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions))
+
+app.use("/image", express.static(path.join(__dirname, './upload'))) // map path picture
 
 // Limit size body
 app.use(express.json({limit: '1kb'}))
